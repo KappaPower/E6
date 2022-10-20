@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+ 
+{% block title %} Chat {% endblock title %}
+ 
+{% block chat %}
+<h3>Чат</h3>
+<h3>НУЖНА ПОМОЩЬ МЕНТОРА!</h3>
+
+{% if messages %} <!-- Если есть посты, то выводим таблицу с ними -->
+
+<table>
+    <tr>
+        <td>
+            user
+        </td>
+        <!-- <td>
+            Дата публикации
+        </td> -->
+        <td>
+            Текст
+        </td>
+     </tr>
+     {% for message in messages %}
+    <tr>
+        <td>
+            {{ message.user }} 
+        </td>
+        <!-- <td>
+            {{  message.dateCreation|date:'d-M-Y H:m' }}
+        </td> -->
+        <td>
+            {{ message.text }}
+        </td>
+    </tr>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+    <h1>Сообщений нет!</h1>
+{% endif %}
+
+{% endblock chat %}
+
+{% block roomscontent %}
+<h5>Комнаты</h5>
+
+{% if rooms %} <!-- Если есть посты, то выводим таблицу с ними -->
+
+<table>
+    <tr>
+        <td>
+            Комната
+        </td>
+     </tr>
+     {% for room in rooms %}
+    <tr>
+        <td>
+            {{ room.name }} <!-- не забываем, что переменные в шаблоне ничем не отличаются от переменных в Python. Здесь также можно получать доступ к полям класса. Например, здесь мы выводим имя, в следующем столбце описание, и т. д.  -->
+        </td>
+    </tr>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+    <h1>Комнат нет!</h1>
+{% endif %}
+{% endblock roomscontent %}
